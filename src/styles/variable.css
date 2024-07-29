@@ -1,0 +1,19 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-sm: 14px;
+    
+    --padding-base: 1rem;
+    --padding-lg: 1.5rem;
+    --padding-sm: 0.5rem;
+    
+    --border-radius: 0.25rem;
+  }
+  

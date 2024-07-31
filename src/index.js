@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './styles/main.css';  // Đảm bảo bạn đã nhập khẩu tệp CSS chính
+import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,54 +1,85 @@
-/* src/components/Header.css */
-
+/* Header Container */
 .header {
-    position: fixed;
-    display: flex;
-    top:0;
-    left: 0;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: #000000;
-    height: 55px;
-    width: 100%;
-    z-index: 1000;
-    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước của header */
+  /* Positioning */
+  position: fixed;
+  z-index: 1000;
 
-  }
-  nav {
-    display: flex; /* Sử dụng Flexbox để căn chỉnh các phần tử con */
-    align-items: center; /* Căn chỉnh các phần tử con theo trục dọc (center) */
-    justify-content: center; /* Phân chia không gian đều giữa các phần tử con */
-    width: 100%;
-  }
-  nav .logo {
-    display: flex;
-    text-decoration: none;
-    color: #fff;
-    padding: 0 18px 0 18px;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px; /* Khoảng cách giữa các phần tử con */
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: #000000;
-    font-size: 14px;
-    padding: 0 10px 0 10px;
-  }
-  
-  nav ul li a:hover {
-    text-decoration: none;
-  }
-  
-.logo img {
-    display: flex;
-    height: 20px;
+  /* Box Model */
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+
+  /* Display & Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Visual */
+  background-color: #ffffff;
+}
+
+/* Navigation Container */
+.nav-container {
+  /* Display & Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Box Model */
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Navigation List */
+.nav-list {
+  /* Display & Flexbox */
+  display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử con theo hàng ngang */
+  justify-content: space-between; /* Phân chia không gian đều giữa các phần tử con */
+  align-items: center; /* Căn chỉnh các phần tử con theo trục dọc */
+
+  /* Box Model */
+  list-style: none; /* Loại bỏ các dấu đầu dòng của danh sách */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Navigation Item */
+.nav-item .nav-link {
+  /* Display & Flexbox */
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation Link */
+.nav-link {
+  /* Display & Flexbox */
+  display: flex;
+  align-items: center;
+
+  /* Typography */
+  text-decoration: none;
+  color: #000000;
+  font-size: 14px;
+
+  /* Box Model */
+  padding: 0 10px;
+  height: 55px;
+  line-height: 55px;
+}
+
+/* Menu Item */
+.menu-item {
+  display: contents;
+}
+
+/* Logo Image */
+.logo-img {
+  height: 26px;
+}
+
+/* Icon */
+.icon {
+  font-size: 22px !important;
+  color: black;
 }

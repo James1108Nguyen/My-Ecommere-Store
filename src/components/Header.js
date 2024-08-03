@@ -1,32 +1,51 @@
-// src/components/Header.js
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import logo from '../assets/Apple_logo_black.png'
+import SearchIcon from '@mui/icons-material/Search';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AuthLogo from '../assets/AuthReseller copy (1).png'
+
+
+const menuItems = [
+  { path: "/", label: "Home" },
+  { path: "/mac", label: "Mac" },
+  { path: "/ipad", label: "iPad" },
+  { path: "/iphone", label: "iPhone" },
+  { path: "/watch", label: "Watch" },
+  { path: "/airpods", label: "AirPods" },
+  { path: "/tv-home", label: "TV & Home" },
+  { path: "/entertainment", label: "Entertainment" },
+  { path: "/accessories", label: "Accessories" },
+  { path: "/support", label: "Support" },
+];
 
 const Header = () => {
   return (
     <header className="header">
-
-      <nav>
-        <div className="logo">
-          <Link to="/">
-            <img src={logo} ></img>
-          </Link>
-
-        </div>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/">Mac</Link></li>
-          <li><Link to="/">iPad</Link></li>
-          <li><Link to="/">iPhone</Link></li>
-          <li><Link to="/">Watch</Link></li>
-          <li><Link to="/">AirPods</Link></li>
-          <li><Link to="/">TV&Home</Link></li>
-          <li><Link to="/">Entertainment</Link></li>
-          <li><Link to="/">Accessories</Link></li>
-          <li><Link to="/">Support</Link></li>
+      <nav className="nav-container">
+        <ul className="nav-list">
+          <li className="nav-item logo-item">
+            <Link to="/" className="nav-link">                
+                <img src= {AuthLogo} alt='' className='logo-img'></img>
+            </Link>
+          </li>
+          <li className="nav-item menu-item">
+            {menuItems.map((item)=>(
+              <Link key={item.path} to={item.path} className='nav-link'>
+                {item.label}
+              </Link>
+            ) )}
+          </li>
+          <li className="nav-item logo-item search-item">
+            <Link to="/search" className="nav-link">
+              <SearchIcon className='icon' />
+            </Link>
+          </li>
+          <li className="nav-item logo-item bag-item">
+            <Link to="/shopping-bag" className="nav-link">
+              <ShoppingCartIcon className='icon' />
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

@@ -1,0 +1,38 @@
+/* Menu của dropdown */
+.dropdown-menu {
+    position: fixed; /* Đặt dropdown ở vị trí fixed */
+    top: 60px; /* Đặt khoảng cách từ đầu trang xuống, tùy thuộc vào chiều cao của header */
+    left: 0;
+    width: 100%; /* Chiều rộng bằng 100% màn hình */
+    background-color: white; /* Màu nền white */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Shadow effect */
+    z-index: 999; /* Đảm bảo dropdown hiển thị trên các phần tử khác */
+    display: grid; /* Sử dụng CSS Grid */
+    grid-template-columns: repeat(3, 1fr); /* Chia dropdown thành 3 cột bằng nhau */
+    padding: 20px; /* Thêm padding cho dropdown */
+  }
+  .dropdown-column.column-1 .dropdown-item {
+    font-weight: 600;
+    font-size: 18px;
+    }
+  /* Các item trong dropdown */
+  .dropdown-item , .dropdown-column-title {
+    font-weight: 600;
+    font-size: 12px;
+    color: black; /* Màu chữ black */
+    padding:  12px 0; /* Padding bên trong */
+    text-decoration: none; /* Bỏ gạch chân */
+    display: block; /* Hiển thị dạng block */
+  }
+  
+  /* Hover effect cho các item */
+  .dropdown-item:hover {
+    background-color: #f1f1f1; /* Background color khi hover */
+  }
+  
+  /* Tiêu đề của cột */
+  .dropdown-column-title {
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #535353;
+}

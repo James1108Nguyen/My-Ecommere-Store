@@ -106,6 +106,7 @@ const Header = () => {
   };
 
   return (
+    <>
     <header className="header">
       <nav className="nav-container">
         <ul className="nav-list">
@@ -124,9 +125,9 @@ const Header = () => {
               <Link to={item.path} className='nav-link'>
                 {item.label}
               </Link>
-              {openDropdown === index && item.columns && (
-                <Dropdown id={`dropdown-${index}`} columns={item.columns} />
-              )}
+                {openDropdown === index && item.columns && (
+                  <Dropdown id={`dropdown-${index}`} columns={item.columns} />
+                )}
             </li>
           ))}
           <li className="nav-item logo-item search-item">
@@ -143,7 +144,10 @@ const Header = () => {
       </nav>
       {/* Luôn hiển thị dropdown cho mục đích styling */}
       <Dropdown columns={menuItems[forceOpenDropdown].columns} /> {/* Chọn menu item nào bạn muốn hiển thị */}
+      {/* {openDropdown !== null && <div className="overlay"></div>}     */}
     </header>
+    <div className='overlay'></div>
+    </>
   );
 };
 

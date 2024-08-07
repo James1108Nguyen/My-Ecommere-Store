@@ -12,6 +12,8 @@
 
 /* Navigation Container */
 .nav-container {
+  position: relative;
+  z-index: 999;
   /* Display & Flexbox */
   display: flex;
   justify-content: center;
@@ -20,7 +22,6 @@
   /* Box Model */
   width: 100%;
   max-width: 1200px;
-  z-index: 1000;
 }
 
 /* Navigation List */
@@ -82,8 +83,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  z-index: 998; /* Đảm bảo overlay nằm dưới dropdown nhưng trên các phần tử khác */
-  display: none;
+  background: rgba(255, 255, 255, 0.7); /* Màu trắng với độ mờ */
+  backdrop-filter: blur(10px); /* Hiệu ứng blur */
+  -webkit-backdrop-filter: blur(10px); /* Hiệu ứng blur cho Safari */
+  z-index: 997; /* Đảm bảo overlay nằm dưới dropdown nhưng trên các phần tử khác */
 }

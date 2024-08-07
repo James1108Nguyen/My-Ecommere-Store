@@ -1,8 +1,26 @@
 .dropdown-container {
   position: absolute;
   top: 55px;
-  width: 100%;
+  right: 0;
+  left: 0;
+  z-index: 998;
+  background: white;
+
+  opacity: 0; /* Bắt đầu với độ mờ */
+  transform: translateY(-10px); /* Bắt đầu với vị trí kéo lên nhẹ */
+  transition: opacity 0.1s ease, transform 0.1s ease; /* Hiệu ứng chuyển động và mờ dần */
 }
+.dropdown-container.open {
+  opacity: 1; /* Làm sáng chữ dần */
+  transform: translateY(0); /* Kéo xuống vị trí ban đầu */
+}
+/* Khi dropdown đóng */
+.dropdown-container.closing {
+  opacity: 0; /* Làm mờ dần */
+  transform: translateY(-10px); /* Trượt lên nhẹ */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển động và mờ dần */
+}
+
 
 /* Menu của dropdown */
 .dropdown-menu {
@@ -10,13 +28,13 @@
   width: 100%;
   background-color: white;
   box-sizing: border-box;
-  z-index: 999;
   display: flex;
   justify-content: start;
   max-width: 1200px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 20px 10px;
+  padding: 20px 0;
+  /* margin-top: 55px; */
 }
 
 /* Các cột trong dropdown */
@@ -43,17 +61,18 @@
   font-weight: 600;
   font-size: 13px;
   color: black; /* Màu chữ black */
-  padding: 10px 0; /* Padding bên trong */
+  padding: 10px 10px; /* Padding bên trong */
   text-decoration: none; /* Bỏ gạch chân */
   display: inline-block;
   width: auto; /* Đảm bảo chiều rộng tự động theo nội dung */
   box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước phần tử */
 
+  opacity: 0; /* Bắt đầu với độ mờ */
+  transition: opacity 0.2s ease 0.2s; /* Hiệu ứng làm sáng chữ dần */
 }
 
 /* Hover effect cho các item */
 .dropdown-item:hover {
-  background-color: #f1f1f1; /* Background color khi hover */
 }
 
 /* Tiêu đề của cột */
@@ -63,4 +82,8 @@
   display: inline-block;
   width: auto;
   /* white-space: nowrap; */
+}
+
+.dropdown-container.open .dropdown-item, .dropdown-container.open .dropdown-column-title {
+  opacity: 1; /* Làm sáng chữ dần khi dropdown mở */
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import SearchIcon from '@mui/icons-material/Search';
@@ -83,28 +83,37 @@ const menuItems = [
 
 const Header = () => {
   const [openDropdown, setOpenDropdown] = useState(null); // State quản lý dropdown nào đang mở
-  const forceOpenDropdown = 0; // Đặt giá trị để luôn hiển thị dropdown cụ thể cho mục đích styling
+  const [isClosing,setIsClosing] = useState(false);
+  let leaveTimeout = useRef(null); // Để xử lý tình huống di chuột ra vào nhanh
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setOpenDropdown(null); // Ẩn dropdown khi người dùng cuộn trang
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (openDropdown !== null) {
+  //       setOpenDropdown(null);
+  //     }
+  //   };
 
-  const handleMouseEnter = (index) => {
-    setOpenDropdown(index); // Mở dropdown của item được hover
+  //   window.addEventListener('scroll', handleScroll);
+
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [openDropdown]);
+
+  const handleMenuItemMouseEnter = (index) => {
+    console.log("handleMenuItemMouseEnter()\n")
+    setIsClosing(false);
+    clearTimeout(leaveTimeout.current);
+    setOpenDropdown(index);
+
   };
-
-  const handleMouseLeave = () => {
-    setOpenDropdown(null); // Đóng dropdown khi không hover nữa
-  };
-
+  const handleMenuItemMouseLeave = () => {
+    console.log("handleMenuItemMouseLeave()\n")
+    setIsClosing(true);
+    leaveTimeout.current = setTimeout(() => setOpenDropdown(null),300);
+  }
+  
+  
   return (
     <>
     <header className="header">
@@ -116,19 +125,23 @@ const Header = () => {
             </Link>
           </li>
           {menuItems.map((item, index) => (
-            <li 
-              className="nav-item menu-item" 
-              key={index} 
-              onMouseEnter={() => handleMouseEnter(index)} 
-              onMouseLeave={handleMouseLeave}
-            >
-              <Link to={item.path} className='nav-link'>
-                {item.label}
-              </Link>
+              <li 
+                className="nav-item menu-item" 
+                key={index} 
+                onMouseEnter={() => handleMenuItemMouseEnter(index)} 
+                onMouseLeave={handleMenuItemMouseLeave}
+              >
+                <Link to={item.path} className='nav-link'>
+                  {item.label}
+                </Link>
                 {openDropdown === index && item.columns && (
-                  <Dropdown id={`dropdown-${index}`} columns={item.columns} />
+                  <Dropdown 
+                    id={`dropdown-${index}`} 
+                    columns={item.columns}
+                    isClosing= {isClosing}
+                  />
                 )}
-            </li>
+              </li>
           ))}
           <li className="nav-item logo-item search-item">
             <Link to="/search" className="nav-link">
@@ -141,13 +154,10 @@ const Header = () => {
             </Link>
           </li>
         </ul>
-      </nav>
-      {/* Luôn hiển thị dropdown cho mục đích styling */}
-      <Dropdown columns={menuItems[forceOpenDropdown].columns} /> {/* Chọn menu item nào bạn muốn hiển thị */}
-      {/* {openDropdown !== null && <div className="overlay"></div>}     */}
+      </nav> 
     </header>
-    <div className='overlay'></div>
-    </>
+    {/* {openDropdown !== null && <div className="overlay" onClick={handleMouseLeave}></div>} */}
+  </>
   );
 };
 
